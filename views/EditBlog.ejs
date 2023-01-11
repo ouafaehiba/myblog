@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--bootstap-->
+    <% include('partials/bootstap.ejs') %>
+    <title>Edit Blog</title>
+  </head>
+  <body>
+    <% include('partials/bootstap.ejs') %> <%= data %>
+    <h1>Editer donnée</h1>
+    <form action="/allposts/edit/<%= data._id %>?_method=PUT" method="post">
+      <input type="hidden" name="_method" value="PUT" />
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          value="<%=data.titre %> "
+        />
+        <label for="floatingInput">titre du post</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          value="<%=data.auteur%> "
+        />
+        <label for="floatingInput">auteur</label>
+      </div>
+
+      <label for="">Titre du post</label>
+      <input type="text" name="title" value="<%" ="data.titre" % /> 
+      <br />
+
+      <label for="">Auteur</label>
+      <input type="text" name="author" value="<%= data.auteur %> " />
+      <br />
+
+      <label for="">Description</label>
+      <textarea name="desc" id="" cols="30" rows="10">
+<%= data.description%></textarea
+      >
+      <br />
+
+      <input type="submit" class="btn btn-warning" value="Editer un post" />
+    </form>
+
+    <h1>Supprimer la donnée</h1>
+    <form
+      action="/allposts/delete/<%= data._id %>?_method=DELETE"
+      method="post"
+    >
+      <input type="hidden" name="_method" value="delete" />
+      <input type="submit" value="Supprimer" />
+    </form>
+  </body>
+</html>
